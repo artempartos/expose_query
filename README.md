@@ -2,8 +2,7 @@
 
 # ExposeQuery
 
-TODO: Write a gem description
-
+Add query benefit for exposed decent_exsposure values
 ## Installation
 
 Add this line to your application's Gemfile:
