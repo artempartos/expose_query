@@ -4,5 +4,12 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails'
-gem 'rspec-its'
-gem 'byebug'
+
+group :development do
+  gem 'guard-rspec', require: false
+  gem 'byebug'
+end
+
+group :test do
+  gem 'codeclimate-test-reporter', require: nil
+end

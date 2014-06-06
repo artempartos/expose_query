@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0
+addons:
+  code_climate:
+    repo_token:
+      secure: NfFT/grGZN8mu41KVqTYba7c6FfLVyDBo0jmtzYEk2NVub/SuhY1pQneR3qSyNPz955RLMEhKhC8CqfmzuAdj9Md8ye8vFq1JP1IZrBVtrK5o5htPNOMSURnIHfRkQnnlXNiCLF5HQFkvLx2LRNtMB7xxCljUTabrCf3tBiqX4E=
