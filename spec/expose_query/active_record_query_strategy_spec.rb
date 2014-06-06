@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'expose_query'
-require 'byebug'
 
 describe ExposeQuery::ActiveRecordQueryStrategy do
 

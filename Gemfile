@@ -7,7 +7,6 @@ gem 'rails'
 
 group :development do
   gem 'guard-rspec', require: false
-  gem 'byebug'
 end
 
 group :test do
