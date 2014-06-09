@@ -1,6 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/chubarovNick/expose_query.png)](https://codeclimate.com/github/chubarovNick/expose_query)
 [![Build Status](https://travis-ci.org/chubarovNick/expose_query.svg?branch=master)](https://travis-ci.org/chubarovNick/expose_query)
-
+[![Dependency Status](https://gemnasium.com/chubarovNick/expose_query.svg)](https://gemnasium.com/chubarovNick/expose_query)
 # ExposeQuery
 
 Add query benefit for exposed decent_exsposure values
