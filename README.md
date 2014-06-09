@@ -14,13 +14,28 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install expose_query
 
 ## Usage
 
-TODO: Write usage instructions here
+Add module to paticular controller:
+
+  class PhotosController  < ApplicationController
+    include ExposeQuery::ControllerDsl
+    expose(:photos)
+
+    expose_query PhotoQuery
+  end
+
+And define query class:
+
+  class PhotoQuery < ExposeQuery::BaseQuery
+
+    def apply source_scope
+      source_scope.where(image_processing: [nil, false])
+    end
+  end
+
+
 
 ## Contributing
 
