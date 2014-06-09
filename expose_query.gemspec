@@ -8,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = ExposeQuery::VERSION
   spec.authors       = ["Nick Chubarov"]
   spec.email         = ["nick.chubarov@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A helper for creating declaretive interface for decent_exposure queries}
   spec.homepage      = ""
   spec.license       = "MIT"
 
