@@ -5,7 +5,7 @@ module ExposeQuery
 
     included do
 
-      cattr_accessor :query_classes
+      class_attribute :query_classes
 
       def self.expose_query(*filter_classes)
         self.query_classes = Array.wrap(filter_classes.to_a)

@@ -11,8 +11,6 @@ class DummyQuery < ExposeQuery::BaseQuery
 end
 
 class DummyController < ActionController::Base
-  include ExposeQuery::ControllerDsl
-  extend DecentExposure::Expose
   expose(:bird) #{ 'Bird' }
   expose_query DummyQuery
 
