@@ -17,7 +17,7 @@ And then execute:
 
 ## Usage
 
-Add module to paticular controller:
+Include module to controller:
 
 ```
   class PhotosController  < ApplicationController
@@ -34,6 +34,22 @@ And define query class:
     def apply source_scope
       source_scope.where(image_processing: [nil, false])
     end
+  end
+```
+
+## Advanced parameters
+
+Allow define query objects for specific expose:
+
+```
+  class PhotosController  < ApplicationController
+    include ExposeQuery::ControllerDsl
+    expose(:photos)
+    expose(:recent_photos, model: :photo)
+
+    expose_query PhotoQuery, PaginationQuery, only: :photos
+    expose_query RecentPhotosQuery, only: :recent_photos
+
   end
 ```
 

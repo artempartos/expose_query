@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails'
-
+gem 'pry'
+gem 'sqlite3'
 group :development do
   gem 'guard-rspec', require: false
 end

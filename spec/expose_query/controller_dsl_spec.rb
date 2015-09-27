@@ -1,25 +1,11 @@
 require 'spec_helper'
-require 'decent_exposure/expose'
-require 'action_controller'
+require 'expose_query'
 
-class DummyQuery < ExposeQuery::BaseQuery
-
-  def apply(source_scope)
-    source_scope
-  end
-
-end
-
-class DummyController < ActionController::Base
-  expose(:bird) #{ 'Bird' }
-  expose_query DummyQuery
-
-end
 
 describe ExposeQuery::ControllerDsl do
 
   describe '.expose_query' do
-    subject { DummyController }
+    subject { Controllers::WithOnlyParameterController }
 
     it { should respond_to(:expose_query) }
 
@@ -28,21 +14,55 @@ describe ExposeQuery::ControllerDsl do
   end
 
   describe '.query_classes' do
-    subject { DummyController.query_classes }
+    subject { Controllers::WithOnlyParameterController.query_classes }
 
     it { is_expected.to include(DummyQuery) }
 
+    it { is_expected.to include(NewDummyQuery) }
+
   end
 
-  describe '' do
-    let(:controller) { DummyController.new }
-    let(:scope) {double(:scope)}
-    before { expect_any_instance_of(DummyQuery).to receive(:apply).and_call_original }
-    subject { controller.apply_filters(scope) }
+  describe 'applying queries' do
+    before do
+      allow(controller).to receive(:request) do
+        double('request', post?: false, put?: false, patch?: false)
+      end
 
-    it { is_expected.to eq(scope) }
+    end
 
+    context 'when expose_query pass only parameter' do
+      let(:controller) { Controllers::WithOnlyParameterController.new }
 
+      it 'apply filters only one expose' do
+        expect_any_instance_of(DummyQuery).to receive(:apply)
+        expect_any_instance_of(NewDummyQuery).not_to receive(:apply)
+        controller.birds
+      end
+
+      it 'apply filter for only expose' do
+        expect_any_instance_of(DummyQuery).to receive(:apply)
+        expect_any_instance_of(NewDummyQuery).to receive(:apply)
+        controller.another_birds
+      end
+
+    end
+
+    context 'when expose_query pass except parameter' do
+      let(:controller) { Controllers::WithExceptParameterController.new}
+
+      it 'apply query for birds' do
+        expect_any_instance_of(DummyQuery).to receive(:apply)
+        expect_any_instance_of(NewDummyQuery).to receive(:apply)
+        controller.birds
+      end
+
+      it 'apply with except for another_birds' do
+        expect_any_instance_of(DummyQuery).to receive(:apply)
+        expect_any_instance_of(NewDummyQuery).not_to receive(:apply)
+        controller.another_birds
+      end
+
+    end
 
   end
 
